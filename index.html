@@ -1,152 +1,635 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Audit Gap — Risk Audits for E-Commerce Businesses</title>
-  <meta name="description" content="Audit Gap delivers professional compliance and visibility audits for US e-commerce businesses. Know your risk before it costs you." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audit Gap — ADA Compliance & AI Visibility Audits for E-Commerce</title>
+  <meta name="description" content="Audit Gap delivers structured risk audits for US e-commerce businesses. Identify ADA lawsuit exposure and AI search invisibility before they cost you. Developer-ready findings in days.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230c1118'/><text x='4' y='24' font-family='serif' font-size='22' font-weight='700' fill='%23ffffff'>A</text><text x='16' y='24' font-family='serif' font-size='22' font-weight='700' fill='%23c8a96e'>G</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Audit Gap",
+    "url": "https://auditgap.co",
+    "description": "Structured risk audits for US e-commerce businesses. ADA compliance gap analysis and AI search visibility audits with developer-ready findings.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "access@auditgap.co",
+      "contactType": "customer service"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Audit Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Website Accessibility Audit",
+          "description": "WCAG 2.1 AA gap analysis for e-commerce stores. Identifies ADA lawsuit exposure with developer-ready remediation guidance.",
+          "url": "https://auditgap.co/accessibility.html"
+        },
+        {
+          "@type": "Offer",
+          "name": "AI Visibility Audit",
+          "description": "Tests e-commerce store presence in ChatGPT, Perplexity, Claude, and Google AI Overview. Identifies visibility gaps and prioritises fixes.",
+          "url": "https://auditgap.co/ai-visibility.html"
+        }
+      ]
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does Audit Gap do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Audit Gap delivers structured risk audits for US e-commerce businesses. We run two types of assessment: Website Accessibility Audits that identify WCAG 2.1 AA compliance gaps and ADA lawsuit exposure, and AI Visibility Audits that test whether your store appears in ChatGPT, Perplexity, Claude, and Google AI Overview responses. Both audits produce developer-ready PDF findings with prioritised fix guidance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How fast is delivery?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Standard delivery is 5 business days from intake completion. Express delivery is 48 hours. The clock starts when you complete the intake form and we confirm receipt. Both tiers produce the same deliverable — the difference is turnaround time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you need backend access to our site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Both audits are conducted on your public-facing site. We assess what is publicly accessible — no CMS credentials, admin access, or analytics access required."
+        }
+      }
+    ]
+  }
+  </script>
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0c1118;
+      --ink-mid: #1a2635;
+      --signal: #c0102a;
+      --signal-hover: #d9152f;
+      --teal: #0b7a6b;
+      --teal-hover: #0e9982;
+      --warm-white: #f9f7f4;
+      --paper: #f4f1ec;
+      --white: #ffffff;
+      --border: #e4e0d9;
+      --gold: #c8a96e;
+      --text-primary: #1a1a1a;
+      --text-secondary: #545d68;
+      --text-muted: #8a9099;
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #0a0f1e;
-      color: #ffffff;
-      min-height: 100vh;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(12,17,24,0.97);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .nav.scrolled {
+      box-shadow: 0 2px 24px rgba(0,0,0,0.35);
+      background: rgba(12,17,24,0.99);
+    }
+
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 40px;
+      height: 64px;
       display: flex;
-      flex-direction: column;
-    }
-    header {
-      padding: 32px 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .logo {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      color: #ffffff;
-    }
-    .logo span { color: #4f8ef7; }
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 80px 24px;
-      text-align: center;
+      justify-content: space-between;
     }
-    .eyebrow {
-      font-size: 13px;
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #4f8ef7;
-      margin-bottom: 20px;
-    }
-    h1 {
-      font-size: clamp(32px, 5vw, 54px);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -1px;
-      max-width: 720px;
-      margin-bottom: 24px;
-    }
-    h1 em {
-      font-style: normal;
-      color: #4f8ef7;
-    }
-    .subtitle {
-      font-size: 18px;
-      color: rgba(255,255,255,0.6);
-      max-width: 520px;
-      line-height: 1.6;
-      margin-bottom: 60px;
-    }
-    .cards {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
-      max-width: 860px;
-    }
-    .card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 40px 36px;
-      width: 380px;
-      text-align: left;
+      font-size: 1.25rem;
+      color: var(--white);
       text-decoration: none;
-      color: #ffffff;
-      transition: border-color 0.2s, background 0.2s;
+      letter-spacing: -0.01em;
     }
-    .card:hover {
-      border-color: #4f8ef7;
-      background: rgba(79,142,247,0.06);
-    }
-    .card-tag {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      background: var(--gold);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      color: #4f8ef7;
-      margin-bottom: 16px;
+      text-decoration: none;
+      padding: 9px 18px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.2s ease;
     }
-    .card h2 {
-      font-size: 22px;
+
+    .nav-cta:hover { background: #d4b87a; }
+
+    .nav-cta::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%; width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.4s ease;
+    }
+
+    .nav-cta:hover::after { left: 140%; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--ink);
+      background-image: radial-gradient(ellipse at 65% -10%, rgba(200,169,110,0.12) 0%, transparent 55%);
+      padding: 112px 40px 96px;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      border: 1px solid rgba(200,169,110,0.4);
+      color: var(--gold);
+      background: rgba(200,169,110,0.07);
+      font-family: 'DM Sans', sans-serif;
       font-weight: 700;
-      margin-bottom: 12px;
-      line-height: 1.3;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 100px;
+      margin-bottom: 36px;
     }
-    .card p {
-      font-size: 15px;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.6;
+
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.04;
+      letter-spacing: -1.5px;
+      color: var(--white);
+      max-width: 760px;
       margin-bottom: 28px;
     }
-    .card-link {
-      font-size: 14px;
-      font-weight: 600;
-      color: #4f8ef7;
+
+    .hero-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.62);
+      max-width: 580px;
     }
-    footer {
-      padding: 28px 40px;
+
+    /* ── OFFER CARDS ── */
+    .offers {
+      background: var(--warm-white);
+      padding: 88px 40px;
+    }
+
+    .offers-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .offers-label {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .offers-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      color: var(--text-primary);
+      margin-bottom: 52px;
+      line-height: 1.2;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .offer-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .offer-card:hover { box-shadow: 0 4px 32px rgba(0,0,0,0.08); }
+
+    .offer-card--signal { border-top: 3px solid var(--signal); }
+    .offer-card--teal   { border-top: 3px solid var(--teal); }
+
+    .offer-card-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.66rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .offer-card-tag--signal { color: var(--signal); }
+    .offer-card-tag--teal   { color: var(--teal); }
+
+    .offer-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.5rem;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+    }
+
+    .offer-card-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+
+    .offer-outcomes {
+      list-style: none;
+      margin-bottom: 32px;
+      flex: 1;
+    }
+
+    .offer-outcome {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .offer-outcome:first-child { border-top: 1px solid var(--border); }
+
+    .outcome-dot {
+      flex-shrink: 0;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      margin-top: 7px;
+    }
+
+    .outcome-dot--signal { background: var(--signal); }
+    .outcome-dot--teal   { background: var(--teal); }
+
+    .offer-pricing {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .offer-pricing strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+    }
+
+    .btn-offer {
+      display: block;
       text-align: center;
-      font-size: 13px;
-      color: rgba(255,255,255,0.3);
-      border-top: 1px solid rgba(255,255,255,0.06);
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      padding: 14px 24px;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.2s ease;
+    }
+
+    .btn-offer::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%; width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.4s ease;
+    }
+
+    .btn-offer:hover::after { left: 140%; }
+
+    .btn-offer--signal { background: var(--signal); }
+    .btn-offer--signal:hover { background: var(--signal-hover); }
+
+    .btn-offer--teal { background: var(--teal); }
+    .btn-offer--teal:hover { background: var(--teal-hover); }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--ink);
+      padding: 64px 40px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .trust-bar-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .trust-label {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 28px;
+    }
+
+    .trust-items {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0;
+    }
+
+    .trust-item {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.5);
+      padding-right: 28px;
+      position: relative;
+      line-height: 2;
+    }
+
+    .trust-item::after {
+      content: '·';
+      position: absolute;
+      right: 10px;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .trust-item:last-child::after { display: none; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 52px 40px;
+    }
+
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--white);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    .footer-domain    { font-size: 0.82rem; color: rgba(255,255,255,0.38); display: block; margin-bottom: 4px; }
+    .footer-email     { font-size: 0.82rem; color: rgba(255,255,255,0.38); display: block; margin-bottom: 20px; }
+    .footer-copyright { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+    .footer-legal     { font-size: 0.72rem; color: rgba(255,255,255,0.3); line-height: 1.7; }
+
+    /* ── REVEAL ── */
+    .reveal-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .reveal-section.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-eyebrow { opacity: 0; transform: translateY(16px); }
+      .hero-h1      { opacity: 0; transform: translateY(16px); }
+      .hero-sub     { opacity: 0; transform: translateY(16px); }
+
+      .hero-eyebrow.animate { animation: fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) 0.20s forwards; }
+      .hero-h1.animate      { animation: fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) 0.38s forwards; }
+      .hero-sub.animate     { animation: fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) 0.54s forwards; }
+
+      @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .hero, .offers, .trust-bar, .footer { padding-left: 24px; padding-right: 24px; }
+      .nav-inner { padding-left: 24px; padding-right: 24px; }
+      .cards-grid { grid-template-columns: 1fr; gap: 20px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .trust-items { flex-direction: column; align-items: flex-start; }
+      .trust-item { padding-right: 0; }
+      .trust-item::after { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 80px 20px 72px; }
+      .offers, .trust-bar, .footer { padding: 64px 20px; }
+      .offer-card { padding: 32px 24px; }
+    }
+
+    @media (max-width: 375px) {
+      .hero, .offers, .trust-bar, .footer { padding-left: 20px; padding-right: 20px; }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo">Audit<span>Gap</span></div>
-  </header>
-
-  <main>
-    <p class="eyebrow">Risk Audits for E-Commerce</p>
-    <h1>Know your exposure<br /><em>before it costs you.</em></h1>
-    <p class="subtitle">Professional audits that identify legal and competitive risk — delivered in days, not weeks.</p>
-
-    <div class="cards">
-
-      <a href="accessibility.html" class="card">
-        <p class="card-tag">ADA Compliance</p>
-        <h2>Website Accessibility Audit</h2>
-        <p>77% of ADA website lawsuits now target e-commerce. Find out if your store is exposed — before a plaintiff's attorney does.</p>
-        <span class="card-link">See audit details →</span>
-      </a>
-
-      <a href="ai-visibility.html" class="card">
-        <p class="card-tag">Generative Search</p>
-        <h2>AI Visibility Audit</h2>
-        <p>If your store doesn't appear in ChatGPT, Perplexity, or Google AI answers, you're invisible to a growing share of buyers.</p>
-        <span class="card-link">See audit details →</span>
-      </a>
-
+  <!-- 1. NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="https://auditgap.co" class="nav-logo">Audit <span>Gap</span></a>
+      <a href="accessibility.html" class="nav-cta">Get an Audit →</a>
     </div>
-  </main>
+  </nav>
 
-  <footer>
-    &copy; 2026 Audit Gap &mdash; All rights reserved &mdash; <a href="/cdn-cgi/l/email-protection#610002020412122100140508150600114f020e" style="color:rgba(255,255,255,0.3);">con
+  <!-- 2. HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Risk Audits for E-Commerce</div>
+      <h1 class="hero-h1">Find the exposure<br>before it finds you.</h1>
+      <p class="hero-sub">Structured audits that identify ADA lawsuit risk and AI search invisibility — developer-ready findings delivered in days.</p>
+    </div>
+  </section>
+
+  <!-- 3. OFFER CARDS -->
+  <section class="offers reveal-section">
+    <div class="offers-inner">
+      <span class="offers-label">Two Audits</span>
+      <h2 class="offers-title">Choose the risk you need to understand first</h2>
+      <div class="cards-grid">
+
+        <!-- Accessibility card -->
+        <div class="offer-card offer-card--signal">
+          <span class="offer-card-tag offer-card-tag--signal">ADA · WCAG 2.1 AA</span>
+          <h3 class="offer-card-name">Website Accessibility Audit</h3>
+          <p class="offer-card-desc">Identifies every WCAG 2.1 AA gap that exposes your store to ADA demand letters and federal lawsuits — before a plaintiff's attorney finds them.</p>
+          <ul class="offer-outcomes">
+            <li class="offer-outcome">
+              <span class="outcome-dot outcome-dot--signal"></span>
+              Full WCAG 2.1 AA gap analysis with severity ranking and criterion reference for every finding
+            </li>
+            <li class="offer-outcome">
+              <span class="outcome-dot outcome-dot--signal"></span>
+              Platform-specific fix instructions your developer can implement without interpretation
+            </li>
+            <li class="offer-outcome">
+              <span class="outcome-dot outcome-dot--signal"></span>
+              Priority Action Board showing which fixes reduce litigation exposure fastest
+            </li>
+          </ul>
+          <p class="offer-pricing">From <strong>$1,250</strong> &nbsp;·&nbsp; Standard 5 days or Express 48 hrs</p>
+          <a href="accessibility.html" class="btn-offer btn-offer--signal">See Accessibility Audit →</a>
+        </div>
+
+        <!-- AI Visibility card -->
+        <div class="offer-card offer-card--teal">
+          <span class="offer-card-tag offer-card-tag--teal">ChatGPT · Perplexity · Claude · Google AI</span>
+          <h3 class="offer-card-name">AI Visibility Audit</h3>
+          <p class="offer-card-desc">Tests whether your store appears in AI-generated answers across four platforms — and identifies exactly what is blocking you from being recommended.</p>
+          <ul class="offer-outcomes">
+            <li class="offer-outcome">
+              <span class="outcome-dot outcome-dot--teal"></span>
+              Live query testing across all four platforms with screenshots of every result
+            </li>
+            <li class="offer-outcome">
+              <span class="outcome-dot outcome-dot--teal"></span>
+              Side-by-side competitor intelligence showing which stores appear instead and why
+            </li>
+            <li class="offer-outcome">
+              <span class="outcome-dot outcome-dot--teal"></span>
+              90-day visibility roadmap with week-by-week implementation sequence
+            </li>
+          </ul>
+          <p class="offer-pricing">From <strong>$1,000</strong> &nbsp;·&nbsp; Standard 5 days or Express 48 hrs</p>
+          <a href="ai-visibility.html" class="btn-offer btn-offer--teal">See AI Visibility Audit →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. TRUST BAR -->
+  <section class="trust-bar reveal-section">
+    <div class="trust-bar-inner">
+      <span class="trust-label">How It Works</span>
+      <div class="trust-items">
+        <span class="trust-item">No backend access required</span>
+        <span class="trust-item">Developer-ready PDF findings</span>
+        <span class="trust-item">Flat fee — no subscriptions</span>
+        <span class="trust-item">5-day standard or 48-hr express</span>
+        <span class="trust-item">Advisory assessment, not legal advice</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <span class="footer-logo">Audit <span>Gap</span></span>
+        <span class="footer-domain">auditgap.co</span>
+        <span class="footer-email">access@auditgap.co</span>
+        <span class="footer-copyright">© 2026 Audit Gap</span>
+      </div>
+      <div>
+        <p class="footer-legal">This website and all reports produced by Audit Gap constitute advisory assessments only and do not constitute legal advice or legal compliance certification. Consult qualified legal counsel for compliance determinations.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── NAV SCROLL ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── HERO ENTRANCE ──
+    const prefersMotion = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+    if (prefersMotion) {
+      ['.hero-eyebrow', '.hero-h1', '.hero-sub'].forEach(function(sel) {
+        const el = document.querySelector(sel);
+        if (el) el.classList.add('animate');
+      });
+    }
+
+    // ── REVEAL ──
+    const revealObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
+
+    document.querySelectorAll('.reveal-section').forEach(function(el) { revealObs.observe(el); });
+  </script>
+</body>
+</html>
