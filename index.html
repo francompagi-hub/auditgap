@@ -179,13 +179,30 @@
     /* ── HERO ── */
     .hero {
       background: var(--ink);
-      background-image: radial-gradient(ellipse at 65% -10%, rgba(200,169,110,0.12) 0%, transparent 55%);
+      background-image: radial-gradient(ellipse at 65% -10%, rgba(200,169,110,0.15) 0%, transparent 55%),
+        radial-gradient(ellipse at 10% 110%, rgba(200,169,110,0.06) 0%, transparent 40%);
       padding: 112px 40px 96px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px;
+      opacity: 0.045;
+      pointer-events: none;
+      z-index: 0;
     }
 
     .hero-inner {
       max-width: 900px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-eyebrow {
@@ -220,11 +237,40 @@
       line-height: 1.7;
       color: rgba(255,255,255,0.62);
       max-width: 580px;
+      margin-bottom: 0;
     }
+
+    .btn-hero-cta {
+      display: inline-block;
+      background: #c8a96e;
+      color: #0c1118;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      padding: 14px 32px;
+      margin-top: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.2s ease;
+    }
+
+    .btn-hero-cta:hover { background: #d4b87a; }
+
+    .btn-hero-cta::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%; width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+      transition: left 0.4s ease;
+    }
+
+    .btn-hero-cta:hover::after { left: 140%; }
 
     /* ── OFFER CARDS ── */
     .offers {
-      background: var(--warm-white);
+      background: var(--ink);
       padding: 88px 40px;
     }
 
@@ -246,11 +292,12 @@
 
     .offers-title {
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
+      font-weight: 700;
       font-size: clamp(1.5rem, 2.8vw, 2.1rem);
-      color: var(--text-primary);
+      color: var(--white);
       margin-bottom: 52px;
       line-height: 1.2;
+      letter-spacing: -0.3px;
     }
 
     .cards-grid {
@@ -260,18 +307,18 @@
     }
 
     .offer-card {
-      background: var(--white);
-      border: 1px solid var(--border);
+      background: #0c1118;
+      border: 1px solid rgba(255,255,255,0.08);
       padding: 40px 36px;
       display: flex;
       flex-direction: column;
-      transition: box-shadow 0.2s ease;
+      transition: border-color 0.2s ease;
     }
 
-    .offer-card:hover { box-shadow: 0 4px 32px rgba(0,0,0,0.08); }
+    .offer-card:hover { border-color: rgba(255,255,255,0.15); }
 
-    .offer-card--signal { border-top: 3px solid var(--signal); }
-    .offer-card--teal   { border-top: 3px solid var(--teal); }
+    .offer-card--signal { border-left: 3px solid #c0102a; }
+    .offer-card--teal   { border-left: 3px solid #0b7a6b; }
 
     .offer-card-tag {
       font-family: 'DM Sans', sans-serif;
@@ -290,7 +337,7 @@
       font-weight: 600;
       font-size: 1.5rem;
       line-height: 1.2;
-      color: var(--text-primary);
+      color: var(--white);
       margin-bottom: 14px;
     }
 
@@ -298,7 +345,7 @@
       font-family: 'DM Sans', sans-serif;
       font-size: 0.9375rem;
       line-height: 1.65;
-      color: var(--text-secondary);
+      color: rgba(255,255,255,0.62);
       margin-bottom: 28px;
     }
 
@@ -313,14 +360,14 @@
       align-items: flex-start;
       gap: 10px;
       padding: 9px 0;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
       font-family: 'DM Sans', sans-serif;
       font-size: 0.875rem;
-      color: var(--text-secondary);
+      color: rgba(255,255,255,0.70);
       line-height: 1.5;
     }
 
-    .offer-outcome:first-child { border-top: 1px solid var(--border); }
+    .offer-outcome:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
 
     .outcome-dot {
       flex-shrink: 0;
@@ -336,7 +383,7 @@
     .offer-pricing {
       font-family: 'DM Sans', sans-serif;
       font-size: 0.82rem;
-      color: var(--text-muted);
+      color: rgba(255,255,255,0.45);
       margin-bottom: 20px;
     }
 
@@ -344,7 +391,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
       font-size: 1.1rem;
-      color: var(--text-primary);
+      color: rgba(255,255,255,0.45);
     }
 
     .btn-offer {
@@ -517,6 +564,7 @@
       <div class="hero-eyebrow">Risk Audits for E-Commerce</div>
       <h1 class="hero-h1">Find the exposure<br>before it finds you.</h1>
       <p class="hero-sub">Structured audits that identify ADA lawsuit risk and AI search invisibility — developer-ready findings delivered in days.</p>
+      <a href="accessibility.html" class="btn-hero-cta">Get an Audit →</a>
     </div>
   </section>
 
@@ -524,7 +572,7 @@
   <section class="offers reveal-section">
     <div class="offers-inner">
       <span class="offers-label">Two Audits</span>
-      <h2 class="offers-title">Choose the risk you need to understand first</h2>
+      <h2 class="offers-title">Two risks. Two audits. Both resolved in days.</h2>
       <div class="cards-grid">
 
         <!-- Accessibility card -->
@@ -580,7 +628,7 @@
   <!-- 4. TRUST BAR -->
   <section class="trust-bar reveal-section">
     <div class="trust-bar-inner">
-      <span class="trust-label">How It Works</span>
+      <span class="trust-label">Why Audit Gap</span>
       <div class="trust-items">
         <span class="trust-item">No backend access required</span>
         <span class="trust-item">Developer-ready PDF findings</span>

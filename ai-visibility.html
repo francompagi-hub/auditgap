@@ -146,9 +146,10 @@
 
     .section-title {
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      font-size: clamp(1.6rem, 3.2vw, 2.4rem);
-      line-height: 1.15;
+      font-weight: 700;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -0.5px;
       color: var(--text-primary);
     }
 
@@ -255,7 +256,7 @@
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       color: var(--white);
       text-decoration: none;
       letter-spacing: -0.01em;
@@ -301,7 +302,31 @@
       overflow: hidden;
     }
 
-    .hero-inner { max-width: 900px; margin: 0 auto; }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px;
+      opacity: 0.045;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 60fr 40fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .hero-stats-box {
+      border: 1px solid rgba(11,122,107,0.42);
+      padding: 36px 28px;
+    }
 
     .hero-badge {
       display: inline-block;
@@ -321,7 +346,7 @@
     .hero-h1 {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 700;
-      font-size: clamp(36px, 5.5vw, 62px);
+      font-size: clamp(40px, 6vw, 74px);
       line-height: 1.06;
       letter-spacing: -1px;
       color: var(--white);
@@ -368,24 +393,31 @@
       font-size: 0.8rem;
       color: rgba(255,255,255,0.38);
       letter-spacing: 0.02em;
-      margin-bottom: 56px;
+      margin-bottom: 0;
     }
 
     .hero-stats {
       display: flex;
-      gap: 56px;
-      flex-wrap: wrap;
-      padding-top: 40px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      flex-direction: column;
+      gap: 0;
+      flex-wrap: nowrap;
     }
 
-    .hero-stat { display: flex; flex-direction: column; }
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-stat:first-child { padding-top: 0; }
+    .hero-stat:last-child { border-bottom: none; padding-bottom: 0; }
 
     .hero-stat-num {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 700;
       font-style: italic;
-      font-size: 3rem;
+      font-size: 3.6rem;
       line-height: 1;
       color: var(--accent);
       margin-bottom: 6px;
@@ -686,7 +718,7 @@
       margin-bottom: 10px;
     }
 
-    .layer-desc { font-size: 0.875rem; line-height: 1.7; color: rgba(255,255,255,0.52); }
+    .layer-desc { font-size: 0.875rem; line-height: 1.7; color: rgba(255,255,255,0.70); }
 
     .value-stack-cta { margin-top: 8px; }
 
@@ -1234,6 +1266,7 @@
 
       .max-w { padding-left: 24px; padding-right: 24px; }
       .nav-inner { padding-left: 24px; padding-right: 24px; }
+      .hero-layout { grid-template-columns: 1fr; gap: 40px; }
 
       .steps-grid { grid-template-columns: 1fr; gap: 44px; }
       .step-card { padding: 0; }
@@ -1257,7 +1290,6 @@
       .methodology, .proof-block, .pricing, .faq,
       .risk-reversal, .cta-form, .footer { padding: 72px 20px; }
 
-      .hero-stats { gap: 32px; }
       .hero-chips { gap: 6px; }
 
       .proof-row { grid-template-columns: 1fr; gap: 4px; }
@@ -1285,32 +1317,40 @@
   <!-- 2. HERO -->
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-badge">First-Mover Window Closing</div>
-      <h1 class="hero-h1">Your store ranks on Google.<br>It disappears in AI answers.</h1>
-      <div class="hero-cta-wrap">
-        <a href="#get-audit" class="btn-accent">See Where My Store Stands →</a>
-      </div>
-      <p class="hero-sub">Only 3–5 stores get named per AI answer. If yours is not one of them, buyers never see you — even when you rank on page one of Google. Your competitors have not acted yet. But they are starting to.</p>
-      <div class="hero-chips">
-        <span class="chip chip--active">ChatGPT</span>
-        <span class="chip chip--active">Perplexity</span>
-        <span class="chip chip--active">Claude</span>
-        <span class="chip chip--active">Google AI Overview</span>
-        <span class="chip">+ emerging platforms</span>
-      </div>
-      <p class="hero-micro">No backend access required &nbsp;·&nbsp; Developer-ready report &nbsp;·&nbsp; Takes less than 60 seconds to start</p>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <span class="hero-stat-num count-up" data-target="4" data-suffix="">0</span>
-          <span class="hero-stat-label">platforms tested per audit</span>
+      <div class="hero-layout">
+        <div class="hero-left">
+          <div class="hero-badge">First-Mover Window Closing</div>
+          <h1 class="hero-h1">Your store ranks on Google.<br>It disappears in AI answers.</h1>
+          <div class="hero-cta-wrap">
+            <a href="#get-audit" class="btn-accent">See Where My Store Stands →</a>
+          </div>
+          <p class="hero-sub">Only 3–5 stores get named per AI answer. If yours is not one of them, buyers never see you — even when you rank on page one of Google. Your competitors have not acted yet. But they are starting to.</p>
+          <div class="hero-chips">
+            <span class="chip chip--active">ChatGPT</span>
+            <span class="chip chip--active">Perplexity</span>
+            <span class="chip chip--active">Claude</span>
+            <span class="chip chip--active">Google AI Overview</span>
+            <span class="chip">+ emerging platforms</span>
+          </div>
+          <p class="hero-micro">No backend access required &nbsp;·&nbsp; Developer-ready report &nbsp;·&nbsp; Takes less than 60 seconds to start</p>
         </div>
-        <div class="hero-stat">
-          <span class="hero-stat-num">3–5</span>
-          <span class="hero-stat-label">stores named per AI answer</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-num count-up" data-target="12" data-suffix="%">0</span>
-          <span class="hero-stat-label">of e-commerce stores have any AI search strategy</span>
+        <div class="hero-right">
+          <div class="hero-stats-box">
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <span class="hero-stat-num count-up" data-target="4" data-suffix="">0</span>
+                <span class="hero-stat-label">platforms tested per audit</span>
+              </div>
+              <div class="hero-stat">
+                <span class="hero-stat-num">3–5</span>
+                <span class="hero-stat-label">stores named per AI answer</span>
+              </div>
+              <div class="hero-stat">
+                <span class="hero-stat-num count-up" data-target="12" data-suffix="%">0</span>
+                <span class="hero-stat-label">of e-commerce stores have any AI search strategy</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
